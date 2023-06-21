@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CarTag {
+  name: String!
+}
+
+type CarBrand {
+  name: String!
+}
+
+type CarCategory {
+  name: String!
+}
+
+type CarMains {
+  id: String!
+  name: String!
+  price: Int!
+  description: String!
+  carCategory: CarCategory!
+  carTags: CarTag!
+  carBrand: CarBrand!
+}
+
+type Query {
+  fetchCar: String!
+}
+
+type Mutation {
+  createCar(createCarInput: CreateCarInput!): CarMains!
+}
+
+input CreateCarInput {
+  name: String!
+  description: String!
+  price: Int!
+}

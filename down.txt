@@ -1,0 +1,4 @@
+yarn add @nestjs/typeorm typeorm mysql2
+//- `@nestjs/typeorm` : NestJS 용 TypeORM.
+- `typeorm` : typeorm 최신 버전으로 설치.
+- `mysql2` : TypeORM 을 MySQL 로 연결하기 위한 프로그램 설치.
