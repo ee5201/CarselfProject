@@ -1,4 +1,5 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
+import { CarCategoryInput } from 'src/apis/carcategories/dto/carCategoryInput';
 
 @InputType()
 export class CreateCarInput {
@@ -8,4 +9,6 @@ export class CreateCarInput {
   description: string;
   @Field(() => Int)
   price: number;
+  @Field(() => CarCategoryInput, { nullable: true })
+  carCategoryId: CarCategoryInput;
 }

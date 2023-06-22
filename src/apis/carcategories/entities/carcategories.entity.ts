@@ -5,6 +5,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @ObjectType()
 export class CarCategory {
   @PrimaryGeneratedColumn('uuid')
+  @Field(() => String)
   id: string;
   @Column()
   @Field(() => String)

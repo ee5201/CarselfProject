@@ -2,3 +2,29 @@ yarn add @nestjs/typeorm typeorm mysql2
 //- `@nestjs/typeorm` : NestJS 용 TypeORM.
 - `typeorm` : typeorm 최신 버전으로 설치.
 - `mysql2` : TypeORM 을 MySQL 로 연결하기 위한 프로그램 설치.
+
+// 1. 실제 삭제
+    // const result = await this.productsRepository.delete({ id: productId });
+    // return result.affected ? true : false; // affetced 실제로 DB에 영향이 갔는지 브라우저에게 알려주는것
+
+    // 2. 소프트 삭제(직접구현) isDeleted
+    // this.productsRepository.update({ id: productId }, { isDeleted: true });
+
+    // 3. 소프트 삭제(직접구현) - deletedAt
+    // this.productsRepository.update(
+    //   { id: productId },
+    //   { deletedAt: new Date() },
+    // );
+
+    //4. 소프트 삭제(TypeORM제공) - softRemove
+    // this.productsRepository.softRemove({ id: productId });
+    // 단점: id로만 삭제 가능
+    // 장점: 여러ID 한번에 지우기 가능
+    // softRemove([{id:qqq},{id: aaa},{id:zzz}])
+
+    //5. 소프트 삭제(TYpeORM제공) - softDelete
+    const result = await this.productsRepository.softDelete({ id: productId });
+    return result.affected ? true : false;
+    // 단점: 여러id로만 삭제 가능
+    // 장점: 여러ID 한번에 지우기 가능
+    // softRemove([{id:qqq},{id: aaa},{id:zzz}])

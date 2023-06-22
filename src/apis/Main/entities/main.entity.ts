@@ -5,6 +5,7 @@ import { CarCategory } from 'src/apis/carcategories/entities/carcategories.entit
 import {
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinColumn,
   JoinTable,
@@ -33,15 +34,17 @@ export class CarMains {
   @Field(() => CarCategory)
   carCategory: CarCategory;
 
-  @ManyToOne(() => CarTag)
-  @Field(() => CarTag)
-  carTags: CarTag;
+  // @ManyToOne(() => CarTag)
+  // @Field(() => CarTag)
+  // carTags: CarTag;
 
-  @ManyToOne(() => CarBrand)
-  @Field(() => CarBrand)
-  carBrand: CarBrand;
+  // @ManyToOne(() => CarBrand)
+  // @Field(() => CarBrand)
+  // carBrand: CarBrand;
 
   @JoinTable()
   @CreateDateColumn()
   createAt: Date;
+  @DeleteDateColumn()
+  deleteAt: Date;
 }

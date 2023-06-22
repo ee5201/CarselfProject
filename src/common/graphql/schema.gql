@@ -2,15 +2,8 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CarTag {
-  name: String!
-}
-
-type CarBrand {
-  name: String!
-}
-
 type CarCategory {
+  id: String!
   name: String!
 }
 
@@ -20,20 +13,35 @@ type CarMains {
   price: Int!
   description: String!
   carCategory: CarCategory!
-  carTags: CarTag!
-  carBrand: CarBrand!
 }
 
 type Query {
-  fetchCar: String!
+  fetchCars: [CarMains!]!
+  fetchCar(CarId: String!): CarMains!
 }
 
 type Mutation {
   createCar(createCarInput: CreateCarInput!): CarMains!
+  deleteCar(carId: String!): Boolean!
+  updateCar(carId: String!, updateCarInput: UpdateCarInput!): CarMains!
+  createCarCategory(name: String!): CarCategory!
 }
 
 input CreateCarInput {
   name: String!
   description: String!
   price: Int!
+  carCategoryId: CarCategoryInput
+}
+
+input CarCategoryInput {
+  id: String
+  name: String
+}
+
+input UpdateCarInput {
+  name: String
+  description: String
+  price: Int
+  carCategoryId: CarCategoryInput
 }
