@@ -1,0 +1,79 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CarSize {
+  id: String!
+  name: String!
+}
+
+type CarBrand {
+  id: String!
+  name: String!
+}
+
+type CarCategory {
+  id: String!
+  name: String!
+}
+
+type CarMains {
+  id: String!
+  name: String!
+  price: Int!
+  description: String!
+  carCategory: CarCategory
+  carSize: CarSize
+  carBrand: CarBrand
+}
+
+type Query {
+  fetchCars: [CarMains!]!
+  fetchCar(CarName: String, CarId: String): CarMains
+}
+
+type Mutation {
+  createCar(createCarInput: CreateCarInput!): CarMains!
+  deleteCar(carId: String!): Boolean!
+  updateCar(Carname: String!, updateCarInput: UpdateCarInput!): CarMains
+  createCarCategory(name: String!): CarCategory
+  carBrand(name: String!): CarBrand
+  uploadFile(files: [Upload!]!): [String!]!
+  createCarSize(name: String!): CarSize!
+}
+
+input CreateCarInput {
+  name: String!
+  description: String!
+  price: Int!
+  carCategoryId: CarCategoryInput
+  carBrandId: CarBrandInput
+  carSizeId: CarSizeInput!
+}
+
+input CarCategoryInput {
+  id: String
+  name: String
+}
+
+input CarBrandInput {
+  id: String
+  name: String
+}
+
+input CarSizeInput {
+  id: String
+  name: String
+}
+
+input UpdateCarInput {
+  name: String
+  description: String
+  price: Int
+  carCategoryId: CarCategoryInput
+  carBrandId: CarBrandInput
+  carSizeId: CarSizeInput
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload

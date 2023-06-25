@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "mbti-390711",
+  "private_key_id": "fca9dadff9541c2ce02fd35ff4b1a82a3a7157e3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDME7OsSaw11vYZ\ncbDO71zb+UsJKyb1GWcfohiwdr2KPsdKweRzS+2O1WrjW+lllSke+GQonG5motza\nUMpS7kir20ZXsgp45tYQIQmaR47YffGEKczwpH9GnDUQpFDB7LZVQIXMJAKUs3jP\nxFne9N8mtRimAMYrhJntN4CaglwPBGUuguhCrDToFEG08lv+3PSg3fnPLekh/cxe\nk4nIkdoZDgRPJajeQyurjPY+VzS1m1Je23+Zx5myOH/ltppvH0bRkHJZtI7XrKsP\nVmR0b8kOFrnq0FU9EbH7obMoGDaQBbzLQQnKSrCq3FYIr9NkepHiQilby+6LAwGl\nT47tESL5AgMBAAECggEAD0nVXSDCmuDCqUK4DrPZUcENN7lSXux39v0DR+Q7xdzd\niQ9M6InovzMXO11gdyCjpuZpea6VoyQsH6gLlQcbgNIM2B2f8dFe4KPakgLIKkk6\nuMtGFBJJ8KwojSZQk7HPZREDSDkh/yoRpASfNCtFgaMk660rxQkKXD5n6Lgl+//j\nh3ecj9bGFw+UMfh+cITA13Hrq1V8CmfDdruEv2Whnb0lqdgMnwvBF4q1Hk7vjRNo\nc4qlu39MiCpeq8EBxsUYKj4P+0nTE01ikLZkOZlt9U2zvSeN5XbMSJWA8MWQxJce\n50vIFRTzDeZqcSUDMCiTvRYkvk8brBakUONVbIFQwwKBgQDsNRXpFaQadF6lvXBg\nYqv7LBWWsTs3n4GqnOvUdKzjq3gntqg6yZGVtGQ+2geMQxb6upi1hbp4YYegtuqg\nkMofFsCPLFGRjjn7lwylI2RRz3DPcFxrEA+fBC8XXiWkLiUmQBcvLxIzwisGLgoi\nXMe8Ns71xG75NS6frUaWQnqQZwKBgQDdLWIA+N9aZDrsEyC08R1ltnu2S7cWG2/j\n/q7CR2WpyVykLHJPW/T+GmAlIjP/u13Bj0YgtvC0yL3nw5rmEk3D0F2yJVSZpeGx\nCMULeFCnoWa70FSbMiOem7B+heRUcLj98zqHq/OGAU4YNJFkHLf8hGWV9YHoK3AN\nK1hXPn8VnwKBgCe26T8uZ1AXXs6JInriPD5X9C1JEUbR59BS4Afxshv5eZNbz79K\notLD6NL0f65inVt8wi5LFMYmx9IKzzo9/e3qOmgYMILDohYeGH8viy+CLFqEbtWF\ndsrqviw0pSmMpKxgvEUvqeTP8cHxPbz3UpHfuT5zT6FRAszQKn0bIlZjAoGBAKKW\nKeTtDcM0ytufc/uPAz0x19856Wym3qmLHoxST7lv/FnzElSkFIR2fxbM/cyPv2v6\nFmMWF/vNVUx5zfQyoFfBZB8AsiAAgNfSyoaT+zY+v3ZwvsEXKnf9mtBnPGGWO2by\n1aPGE03+x5mjiv0830MRUFvcDZLN26DSrC32ExWhAoGBAOr6J1zQ69Z+D62QWDl1\nz5jb+bAe6ROnOKZUX8LBTJ1o9DYEmtaq5OGzwmj8V89WddQFDx+22QbUCMr7BEHj\nbEcmo44NOXW47MYfZYVPYEk/Xo9PXZ+Dgi83XCY9NfcTUkypFs9xV9aRmDeAH8Uq\nnSBSzjmLnvwP4jhqAO9B4pQw\n-----END PRIVATE KEY-----\n",
+  "client_email": "mbticar-storage@mbti-390711.iam.gserviceaccount.com",
+  "client_id": "103510257105966674495",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mbticar-storage%40mbti-390711.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
