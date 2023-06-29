@@ -1,7 +1,8 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import { CarSize } from 'src/apis/carSIze/entities/carsize.entity';
 import { CarBrand } from 'src/apis/carbrand/entities/carbrand.entity';
 import { CarCategory } from 'src/apis/carcategories/entities/carcategories.entity';
+import { MBTIS } from 'src/apis/mbti/entities/mbti.entity';
 import {
   Column,
   CreateDateColumn,
@@ -9,8 +10,8 @@ import {
   Entity,
   JoinColumn,
   JoinTable,
+  ManyToMany,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -45,4 +46,7 @@ export class CarMains {
   createAt: Date;
   @DeleteDateColumn()
   deleteAt: Date;
+  @ManyToOne(() => MBTIS)
+  @Field(() => MBTIS)
+  mbtis: MBTIS;
 }

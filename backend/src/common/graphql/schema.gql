@@ -17,6 +17,12 @@ type CarCategory {
   name: String!
 }
 
+type MBTIS {
+  id: String!
+  name: String!
+  contents: String!
+}
+
 type CarMains {
   id: String!
   name: String!
@@ -25,11 +31,14 @@ type CarMains {
   carCategory: CarCategory
   carSize: CarSize
   carBrand: CarBrand
+  mbtis: MBTIS!
 }
 
 type Query {
   fetchCars: [CarMains!]!
   fetchCar(CarName: String, CarId: String): CarMains
+  fetchMbtis: [MBTIS!]!
+  fetchMbti(MbtiName: String!): MBTIS!
 }
 
 type Mutation {
@@ -40,6 +49,7 @@ type Mutation {
   carBrand(name: String!): CarBrand
   uploadFile(files: [Upload!]!): [String!]!
   createCarSize(name: String!): CarSize!
+  creatembti(name: String!, contents: String!): MBTIS!
 }
 
 input CreateCarInput {
@@ -49,6 +59,7 @@ input CreateCarInput {
   carCategoryId: CarCategoryInput
   carBrandId: CarBrandInput
   carSizeId: CarSizeInput!
+  creatembti: CreateMbtiInput
 }
 
 input CarCategoryInput {
@@ -66,6 +77,12 @@ input CarSizeInput {
   name: String
 }
 
+input CreateMbtiInput {
+  id: String
+  name: String
+  contents: String
+}
+
 input UpdateCarInput {
   name: String
   description: String
@@ -73,6 +90,7 @@ input UpdateCarInput {
   carCategoryId: CarCategoryInput
   carBrandId: CarBrandInput
   carSizeId: CarSizeInput
+  creatembti: CreateMbtiInput
 }
 
 """The `Upload` scalar type represents a file upload."""

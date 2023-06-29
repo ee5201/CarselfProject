@@ -18,7 +18,7 @@ export class MainService {
 
   fetchAll(): Promise<CarMains[]> {
     return this.CarMainRepository.find({
-      relations: ['carSize', 'carBrand', 'carCategory'],
+      relations: ['mbtis', 'carSize', 'carBrand', 'carCategory'],
     });
   }
   fetchOne({ carName, carId }: IPropsFetchOne): Promise<CarMains> {
@@ -27,12 +27,13 @@ export class MainService {
         id: carId,
         name: carName,
       },
-      relations: ['carSize', 'carBrand', 'carCategory'],
+      relations: ['mbtis', 'carSize', 'carBrand', 'carCategory'],
     });
   }
 
   create({ createCarInput }: ICarMainCreate): Promise<CarMains> {
-    const { carSizeId, carBrandId, carCategoryId, ...carMain } = createCarInput;
+    const { creatembti, carSizeId, carBrandId, carCategoryId, ...carMain } =
+      createCarInput;
     const result = this.CarMainRepository.save({
       ...carMain,
       carCategory: {
@@ -43,6 +44,9 @@ export class MainService {
       },
       carSize: {
         ...carSizeId,
+      },
+      mbtis: {
+        ...creatembti,
       },
     });
     return result;

@@ -9,6 +9,7 @@ import { CarCategoryModule } from './apis/carcategories/carcategory.module';
 import { CarBrandMoudle } from './apis/carbrand/carbrand.module';
 import { FilesModule } from './apis/files/files.module';
 import { CarSizeMoudle } from './apis/carSIze/carSize.module';
+import { MbtiModule } from './apis/mbti/mbti.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CarSizeMoudle } from './apis/carSIze/carSize.module';
     CarBrandMoudle,
     FilesModule,
     CarSizeMoudle,
+    MbtiModule,
     ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,

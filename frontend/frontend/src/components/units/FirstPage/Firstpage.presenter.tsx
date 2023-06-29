@@ -1,19 +1,27 @@
+import { IPropsFirstPagePresenter } from "./FirstPage.types";
 import * as S from "./Firstpage.styled";
+import styled, { keyframes } from "styled-components";
 
-export default function FirstPagePresenter() {
+export default function FirstPagePresenter(
+  props: IPropsFirstPagePresenter
+): JSX.Element {
   return (
-    <S.Wrapper>
-      <S.WrapperBox>
-        <S.MainTitle>MBTI별 차량 추천</S.MainTitle>
-        <S.Box>
+    <>
+      <S.Wrapper>
+        <S.MainBox>
+          <div>
+            <S.MaintitleH1>Seize The Day</S.MaintitleH1>
+            <S.MaintitleP>
+              Try to Check out your personal MBTI for fun, then you'll find the
+              car that fits you
+            </S.MaintitleP>
+          </div>
           <S.ButtonBox>
-            <S.Button>해외차량</S.Button>
+            <S.Button onClick={props.OnClickPremium}>Premium car</S.Button>
+            <S.Button onClick={props.OnClickDomestic}>Domestic car</S.Button>
           </S.ButtonBox>
-          <S.ButtonBox>
-            <S.Button>국내차량</S.Button>
-          </S.ButtonBox>
-        </S.Box>
-      </S.WrapperBox>
-    </S.Wrapper>
+        </S.MainBox>
+      </S.Wrapper>
+    </>
   );
 }
