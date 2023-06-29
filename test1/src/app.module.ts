@@ -23,7 +23,13 @@ import { FilesTestModule } from './apis/filestest/fileTest.module';
       driver: ApolloDriver,
       autoSchemaFile: true,
       cors: {
-        origin: 'http://localhost:3001',
+        origin: [
+          'http://localhost:3000',
+          'http://localhost:3001',
+          'http://127.0.0.1:3000',
+          'http://127.0.0.1:3001',
+          'https://storage.googleapis.com',
+        ],
         credentials: true,
       },
     }),

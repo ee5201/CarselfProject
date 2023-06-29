@@ -64,12 +64,26 @@ export type ICreateCarInput = {
 };
 
 export type ICreateMbtiInput = {
+  FileId: IFilesInput;
   carBrandId?: InputMaybe<ICarBrandInput>;
   carCategoryId?: InputMaybe<ICarCategoryInput>;
   carSizeId: ICarSizeInput;
   contents: Scalars['String']['input'];
   creatmains?: InputMaybe<ICreateCarInput>;
   name: Scalars['String']['input'];
+};
+
+export type IFilesImages = {
+  __typename?: 'FilesImages';
+  id?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['Float']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type IFilesInput = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['Float']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type IMbtis = {
@@ -79,6 +93,7 @@ export type IMbtis = {
   carMain?: Maybe<ICarMains>;
   carSize?: Maybe<ICarSize>;
   contents: Scalars['String']['output'];
+  fileimage: IFilesImages;
   id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
@@ -92,7 +107,7 @@ export type IMutation = {
   creatembti: IMbtis;
   deleteCar: Scalars['Boolean']['output'];
   updateMBTI?: Maybe<IMbtis>;
-  uploadFile: Scalars['String']['output'];
+  uploadFile: IFilesImages;
 };
 
 
@@ -156,6 +171,7 @@ export type IQueryFetchMbtiArgs = {
 };
 
 export type IUpdateMbtiInput = {
+  FileId?: InputMaybe<IFilesInput>;
   carBrandId?: InputMaybe<ICarBrandInput>;
   carCategoryId?: InputMaybe<ICarCategoryInput>;
   carSizeId?: InputMaybe<ICarSizeInput>;

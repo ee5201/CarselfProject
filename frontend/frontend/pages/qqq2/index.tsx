@@ -31,7 +31,8 @@ export default function ImageUploadPage(): JSX.Element {
         name: test,
       },
     });
-    console.log(result);
+    console.log(result.data?.carBrand?.id);
+    console.log(result.data?.carBrand?.name);
   };
 
   return (

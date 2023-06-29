@@ -4,6 +4,7 @@ import { CarCategoryInput } from 'src/apis/carcategories/dto/carCategoryInput';
 import { CarBrandInput } from 'src/apis/carbrand/dto/createCarbrandInput';
 import { CarSizeInput } from 'src/apis/carSIze/dto/CarSizeinput';
 import { CreateCarInput } from 'src/apis/Main/dto/createCarInput';
+import { FilesInput } from 'src/apis/filestest/dto/createImages';
 
 @InputType()
 export class CreateMbtiInput {
@@ -19,4 +20,6 @@ export class CreateMbtiInput {
   carBrandId: CarBrandInput;
   @Field(() => CarSizeInput)
   carSizeId: CarSizeInput;
+  @Field(() => FilesInput)
+  FileId: FilesInput;
 }

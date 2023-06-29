@@ -3,6 +3,8 @@ import { CarMains } from 'src/apis/Main/entities/main.entity';
 import { CarSize } from 'src/apis/carSIze/entities/carsize.entity';
 import { CarBrand } from 'src/apis/carbrand/entities/carbrand.entity';
 import { CarCategory } from 'src/apis/carcategories/entities/carcategories.entity';
+import { FilesImages } from 'src/apis/filestest/entities/filesentity.entity';
+
 import {
   Column,
   CreateDateColumn,
@@ -36,6 +38,9 @@ export class MBTIS {
   @ManyToOne(() => CarBrand)
   @Field(() => CarBrand, { nullable: true })
   carBrand: CarBrand;
+  @ManyToOne(() => FilesImages)
+  @Field(() => FilesImages)
+  fileimage: FilesImages;
 
   @JoinTable()
   @CreateDateColumn()
