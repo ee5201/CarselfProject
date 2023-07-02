@@ -39,7 +39,7 @@ export class MBTIS {
   @Field(() => CarBrand, { nullable: true })
   carBrand: CarBrand;
   @ManyToOne(() => FilesImages)
-  @Field(() => FilesImages)
+  @Field(() => FilesImages, { nullable: true })
   fileimage: FilesImages;
 
   @JoinTable()

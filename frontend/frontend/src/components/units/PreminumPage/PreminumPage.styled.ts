@@ -9,24 +9,63 @@ export const Wrapper = styled.section`
   background-size: cover;
   justify-content: center;
   align-items: center;
+  font-family: "my-font";
 `;
 
-export const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 100px;
+export const WrapperBox = styled.div`
+  height: 60vh;
 `;
 
-export const GridItem = styled.div`
-  width: 200px;
+export const TitleBox = styled.div`
+  padding: 50px;
   text-align: center;
 `;
 
-export const Button = styled.button`
-  font-size: 14px;
-  width: 120px;
-  height: 90px;
-  font-size: 14px;
-  background: transparent;
-  border-radius: 10px;
+export const Title = styled.h1`
+  font-size: 60px;
+  color: #fff;
+`;
+
+export const Subtitle = styled.h1`
+  padding: 5px;
+  color: #fff;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  height: 400px;
+  width: 1000px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  position: relative;
+  overflow: hidden;
+`;
+
+export const BtnBox = styled.div`
+  display: flex;
+  overflow: hidden;
+  margin: 80px;
+  min-width: 300px;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  background: #ece5c7;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  :hover {
+    margin-bottom: 1px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+    background: linear-gradient(rgba(0, 0, 0, 0), #ece5c7);
+  }
+`;
+export const ContentWrapper = styled.div`
+  display: flex;
+  cursor: pointer;
+`;
+
+export const contentItems = styled.div`
+  font-size: 50px;
 `;
