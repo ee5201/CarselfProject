@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MBTIS } from './entities/mbti.entity';
 import { Repository } from 'typeorm';
-import { CreateMbtiInput } from './dto/creatembtiinput';
 
 @Injectable()
 export class MbtiService {
@@ -13,7 +12,7 @@ export class MbtiService {
 
   findAll(): Promise<MBTIS[]> {
     return this.MBTIRepository.find({
-      relations: ['carMain', 'carSize', 'carBrand', 'carCategory'],
+      relations: ['carMain'],
     });
   }
 
@@ -22,7 +21,7 @@ export class MbtiService {
       where: {
         name: mbtiName,
       },
-      relations: ['carMain', 'carSize', 'carBrand', 'carCategory'],
+      relations: ['carMain'],
     });
   }
 
@@ -39,22 +38,21 @@ export class MbtiService {
   //   return result;
   // }
   create({ creatembtiInput }): Promise<MBTIS> {
-    const { creatmains, carCategoryId, carBrandId, carSizeId, ...mbti } =
-      creatembtiInput;
+    const { creatmains, ...mbti } = creatembtiInput;
     const result = this.MBTIRepository.save({
       ...mbti,
       carMain: {
         ...creatmains,
       },
-      carCategory: {
-        ...carCategoryId,
-      },
-      carSize: {
-        ...carSizeId,
-      },
-      carBrand: {
-        ...carBrandId,
-      },
+      // carCategory: {
+      //   ...carCategoryId,
+      // },
+      // carSize: {
+      //   ...carSizeId,
+      // },
+      // carBrand: {
+      //   ...carBrandId,
+      // },
     });
     return result;
   }

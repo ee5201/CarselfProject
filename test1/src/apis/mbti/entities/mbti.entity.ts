@@ -29,19 +29,6 @@ export class MBTIS {
   @Field(() => String)
   contents: string;
   @JoinColumn()
-  @ManyToOne(() => CarCategory)
-  @Field(() => CarCategory, { nullable: true })
-  carCategory: CarCategory;
-  @ManyToOne(() => CarSize)
-  @Field(() => CarSize, { nullable: true })
-  carSize: CarSize;
-  @ManyToOne(() => CarBrand)
-  @Field(() => CarBrand, { nullable: true })
-  carBrand: CarBrand;
-  @ManyToOne(() => FilesImages)
-  @Field(() => FilesImages, { nullable: true })
-  fileimage: FilesImages;
-
   @JoinTable()
   @CreateDateColumn()
   createAt: Date;

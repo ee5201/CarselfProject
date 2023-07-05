@@ -14,12 +14,4 @@ export class CreateMbtiInput {
   contents: string;
   @Field(() => CreateCarInput, { nullable: true })
   creatmains: CreateCarInput;
-  @Field(() => CarCategoryInput, { nullable: true })
-  carCategoryId: CarCategoryInput;
-  @Field(() => CarBrandInput, { nullable: true })
-  carBrandId: CarBrandInput;
-  @Field(() => CarSizeInput)
-  carSizeId: CarSizeInput;
-  @Field(() => FilesInput)
-  FileId: FilesInput;
 }

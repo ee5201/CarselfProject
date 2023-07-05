@@ -15,20 +15,53 @@ export class MainService {
   ) {}
 
   fetchAll(): Promise<CarMains[]> {
-    return this.CarMainRepository.find();
+    return this.CarMainRepository.find({
+      relations: ['carSize', 'carBrand', 'carCategory'],
+    });
   }
-  fetchOne({ carName, carId }: IPropsFetchOne): Promise<CarMains> {
+  fetchOne({ carId, carName }: IPropsFetchOne): Promise<CarMains> {
     return this.CarMainRepository.findOne({
       where: {
         id: carId,
         name: carName,
       },
+      relations: ['carSize', 'carBrand', 'carCategory'],
     });
   }
 
+  // create({ createCarInput }) {
+  //   const result = this.CarMainRepository.save({
+  //     ...createCarInput,
+  //   });
+  //   return result;
+  // }
   create({ createCarInput }) {
+    const { FileId, carSizeId, carBrandId, carCategoryId, ...createCar } =
+      createCarInput;
     const result = this.CarMainRepository.save({
-      ...createCarInput,
+      ...createCar,
+      carCategory: {
+        ...carCategoryId,
+      },
+      carSize: {
+        ...carSizeId,
+      },
+      carBrand: {
+        ...carBrandId,
+      },
+      fileimage: {
+        ...FileId,
+      },
+    });
+    return result;
+  }
+
+  async update({ carId, carName, updateCarInput }) {
+    const Id = await this.fetchOne({ carId, carName });
+
+    const result = this.CarMainRepository.save({
+      ...Id,
+      ...updateCarInput,
     });
     return result;
   }

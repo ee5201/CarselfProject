@@ -12,6 +12,7 @@ export default function PreminumItypeContainer() {
   const OnclickID = (event: MouseEvent<HTMLSpanElement>) => {
     router.push(`/PreminumPage/Itype/${event.currentTarget.id}`);
   };
+  console.log(data);
 
   return (
     <>

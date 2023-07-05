@@ -16,6 +16,7 @@ export default function MbetiDetailPage() {
     },
   });
   console.log("아이디는?", router.query.mbtiId);
+  console.log(data?.fetchMbti.contents);
   return (
     <>
       <PreminumITypeDetailContatiner data={data} />
