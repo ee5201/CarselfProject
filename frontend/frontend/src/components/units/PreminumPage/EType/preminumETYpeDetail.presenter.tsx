@@ -1,4 +1,4 @@
-import * as S from "./preminumITYpeDetail.styles";
+import * as S from "./preminumETYpeDetail.styles";
 
 export default function PreminumITypeDetailPresenter(props) {
   if (!props.data || !props.data.fetchMbti) {

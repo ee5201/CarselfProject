@@ -1,4 +1,4 @@
-import PreminumITypeDetailPresenter from "./preminumITYpeDetail.presenter";
+import PreminumITypeDetailPresenter from "./preminumETYpeDetail.presenter";
 
 export default function PreminumITypeDetailContatiner(props) {
   const ContentsSplit = String(props.data?.fetchMbti.contents).split(".");

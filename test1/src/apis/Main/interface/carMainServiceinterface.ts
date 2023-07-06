@@ -13,3 +13,13 @@ export interface IPropsFetchOne {
 export interface ICarMainDelete {
   carId: string;
 }
+
+export interface IPropsFetchCar {
+  carName: string[];
+}
+
+export interface IPropsCarServiceBulkInsert {
+  names: {
+    name: string;
+  }[];
+}

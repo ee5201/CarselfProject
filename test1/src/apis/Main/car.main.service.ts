@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { CarMains } from './entities/main.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   ICarMainCreate,
+  IPropsCarServiceBulkInsert,
+  IPropsFetchCar,
   IPropsFetchOne,
 } from './interface/carMainServiceinterface';
 
@@ -16,7 +18,7 @@ export class MainService {
 
   fetchAll(): Promise<CarMains[]> {
     return this.CarMainRepository.find({
-      relations: ['carSize', 'carBrand', 'carCategory'],
+      relations: ['fileimage', 'carSize', 'carBrand', 'carCategory'],
     });
   }
   fetchOne({ carId, carName }: IPropsFetchOne): Promise<CarMains> {
@@ -25,16 +27,21 @@ export class MainService {
         id: carId,
         name: carName,
       },
-      relations: ['carSize', 'carBrand', 'carCategory'],
+      relations: ['fileimage', 'carSize', 'carBrand', 'carCategory'],
     });
   }
 
-  // create({ createCarInput }) {
-  //   const result = this.CarMainRepository.save({
-  //     ...createCarInput,
-  //   });
-  //   return result;
-  // }
+  fetchCar({ carName }: IPropsFetchCar) {
+    return this.CarMainRepository.find({
+      where: { name: In(carName) },
+      relations: ['fileimage', 'carSize', 'carBrand', 'carCategory'],
+    });
+  }
+
+  bulkInsert({ names }) {
+    return this.CarMainRepository.insert(names);
+  }
+
   create({ createCarInput }) {
     const { FileId, carSizeId, carBrandId, carCategoryId, ...createCar } =
       createCarInput;

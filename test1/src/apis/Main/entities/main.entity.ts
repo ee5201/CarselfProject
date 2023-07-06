@@ -3,11 +3,13 @@ import { CarSize } from 'src/apis/carSIze/entities/carsize.entity';
 import { CarBrand } from 'src/apis/carbrand/entities/carbrand.entity';
 import { CarCategory } from 'src/apis/carcategories/entities/carcategories.entity';
 import { FilesImages } from 'src/apis/filestest/entities/filesentity.entity';
+import { MBTIS } from 'src/apis/mbti/entities/mbti.entity';
 
 import {
   Column,
   Entity,
   JoinColumn,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -22,10 +24,10 @@ export class CarMains {
   @Field(() => String)
   name: string;
   @Column()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   price: number;
   @Column()
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   description: string;
   @JoinColumn()
   @ManyToOne(() => CarCategory)
@@ -40,4 +42,7 @@ export class CarMains {
   @ManyToOne(() => FilesImages)
   @Field(() => FilesImages, { nullable: true })
   fileimage: FilesImages;
+  @ManyToMany(() => MBTIS, (Mbtis) => Mbtis.carMain)
+  @Field(() => [MBTIS], { nullable: true })
+  mbtis: MBTIS[];
 }

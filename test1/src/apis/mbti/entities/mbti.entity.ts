@@ -12,6 +12,7 @@ import {
   Entity,
   JoinColumn,
   JoinTable,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -30,11 +31,11 @@ export class MBTIS {
   contents: string;
   @JoinColumn()
   @JoinTable()
+  @ManyToMany(() => CarMains, (CarMain) => CarMain.mbtis)
+  @Field(() => [CarMains], { nullable: true })
+  carMain: CarMains[];
   @CreateDateColumn()
   createAt: Date;
   @DeleteDateColumn()
   deleteAt: Date;
-  @ManyToOne(() => CarMains)
-  @Field(() => CarMains, { nullable: true })
-  carMain: CarMains;
 }

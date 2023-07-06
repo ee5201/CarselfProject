@@ -7,11 +7,11 @@ import { FilesInput } from 'src/apis/filestest/dto/createImages';
 
 @InputType()
 export class CreateCarInput {
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   name: string;
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   price: number;
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   description: string;
   @Field(() => CarCategoryInput, { nullable: true })
   carCategoryId: CarCategoryInput;

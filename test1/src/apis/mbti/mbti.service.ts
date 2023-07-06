@@ -2,12 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MBTIS } from './entities/mbti.entity';
 import { Repository } from 'typeorm';
+import { MainService } from '../Main/car.main.service';
 
 @Injectable()
 export class MbtiService {
   constructor(
     @InjectRepository(MBTIS)
-    private readonly MBTIRepository: Repository<MBTIS>
+    private readonly MBTIRepository: Repository<MBTIS>,
+    private readonly mainService: MainService
   ) {}
 
   findAll(): Promise<MBTIS[]> {
@@ -21,7 +23,13 @@ export class MbtiService {
       where: {
         name: mbtiName,
       },
-      relations: ['carMain'],
+      relations: [
+        'carMain',
+        'carMain.carCategory',
+        'carMain.carSize',
+        'carMain.carBrand',
+        'carMain.fileimage',
+      ],
     });
   }
 
@@ -37,22 +45,33 @@ export class MbtiService {
   //   });
   //   return result;
   // }
-  create({ creatembtiInput }): Promise<MBTIS> {
+  async create({ creatembtiInput }): Promise<MBTIS> {
     const { creatmains, ...mbti } = creatembtiInput;
+
+    const carName = creatmains.map((el) => el.replace('#', ''));
+    // ["#스타리아","#말리부"]
+
+    const prevCars = await this.mainService.fetchCar({ carName });
+
+    const temp = [];
+    const tags = [];
+
+    carName.forEach((el) => {
+      const isExists = prevCars.find((prevEl) => el === prevEl.name);
+      if (!isExists) temp.push({ name: el });
+    });
+    const findresorce = temp.map((el) => {
+      const item = this.mainService.fetchCar({ carName: el });
+      return tags.push(item);
+    });
+
+    const newCars = await this.mainService.bulkInsert({ names: findresorce });
+
+    const carTags = [...prevCars, ...newCars.identifiers];
+
     const result = this.MBTIRepository.save({
       ...mbti,
-      carMain: {
-        ...creatmains,
-      },
-      // carCategory: {
-      //   ...carCategoryId,
-      // },
-      // carSize: {
-      //   ...carSizeId,
-      // },
-      // carBrand: {
-      //   ...carBrandId,
-      // },
+      carMain: carTags,
     });
     return result;
   }
