@@ -1,20 +1,7 @@
 import { Carousel } from "antd";
-import * as S from "./PreminumPage.styled";
+import * as S from "./MBTIPage.styled";
 
-const contentStyle: React.CSSProperties = {
-  // marginTop: "100px",
-  // marginLeft: "600px",
-  // marginRight: "600px",
-  height: "260px",
-  color: "#3F2305",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#F3DEBA",
-  borderRadius: "20px",
-  fontSize: "50px",
-};
-
-export default function PreminumPagePresenter(props) {
+export default function MBTIPagePresenter(props) {
   return (
     <>
       <S.Wrapper>
@@ -31,11 +18,9 @@ export default function PreminumPagePresenter(props) {
                 <S.contentItems>I Type</S.contentItems>
               </S.ContentWrapper>
             </S.BtnBox>
-            <S.BtnBox>
+            <S.BtnBox onClick={props.OnclickEType}>
               <S.ContentWrapper>
-                <S.contentItems onClick={props.OnclickEType}>
-                  E Type
-                </S.contentItems>
+                <S.contentItems>E Type</S.contentItems>
               </S.ContentWrapper>
             </S.BtnBox>
           </S.ButtonWrapper>

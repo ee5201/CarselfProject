@@ -1,6 +1,6 @@
-import PreminumITypeDetailPresenter from "./preminumITYpeDetail.presenter";
+import PreminumITypeDetailPresenter from "./TYpeDetail.presenter";
 
-export default function PreminumITypeDetailContatiner(props) {
+export default function TypeDetailContatiner(props) {
   const ContentsSplit = String(props.data?.fetchMbti.contents).split(".");
   const carImage = String(props.data?.fetchMbti.carMain[0].fileimage.url);
   return (

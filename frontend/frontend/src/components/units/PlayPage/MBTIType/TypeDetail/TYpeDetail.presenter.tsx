@@ -1,9 +1,14 @@
-import * as S from "./preminumETYpeDetail.styles";
+import { Spin } from "antd";
+import * as S from "./TYpeDetail.styles";
 
-export default function PreminumITypeDetailPresenter(props) {
+export default function TypeDetailPresenter(props) {
   if (!props.data || !props.data.fetchMbti) {
     // 데이터 로딩 중 또는 데이터가 없는 경우 로딩 UI 또는 에러 처리를 할 수 있다.
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Spin />
+      </div>
+    );
   }
 
   return (

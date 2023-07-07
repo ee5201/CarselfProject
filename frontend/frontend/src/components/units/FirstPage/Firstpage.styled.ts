@@ -31,7 +31,8 @@ export const ButtonBox = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 150px;
+  width: 180px;
+  font-size: 30px;
   text-decoration: none;
   display: inline-block;
   margin: 0 40px;

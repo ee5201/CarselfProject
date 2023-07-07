@@ -5,15 +5,7 @@ import { useRouter } from "next/router";
 export default function FirstpageContainer() {
   const router = useRouter();
   const OnClickPremium = () => {
-    router.push("/PreminumPage");
+    router.push("/ClickPlayPage");
   };
-  const OnClickDomestic = () => {
-    router.push("./DomesticPage");
-  };
-  return (
-    <FirstPagePresenter
-      OnClickPremium={OnClickPremium}
-      OnClickDomestic={OnClickDomestic}
-    />
-  );
+  return <FirstPagePresenter OnClickPremium={OnClickPremium} />;
 }

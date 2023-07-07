@@ -1,11 +1,8 @@
 import { gql, useQuery } from "@apollo/client";
-import PreminumITypeDetailContatiner from "../../../../src/components/units/PreminumPage/IType/ITypeDetail/preminumITYpeDetail.container";
-import { FETCHMBTI } from "../../../../src/components/units/PreminumPage/IType/ITypeDetail/preminumITYpeDetail.queries";
-import {
-  IQuery,
-  IQueryFetchMbtiArgs,
-} from "../../../../src/commons/types/generated/types";
+import { FETCHMBTI } from "../../../../src/components/units/PlayPage/MBTIType/TypeDetail/TYpeDetail.queries";
+
 import { useRouter } from "next/router";
+import TypeDetailContatiner from "../../../../src/components/units/PlayPage/MBTIType/TypeDetail/TYpeDetail.container";
 
 export default function MbetiDetailPage() {
   const router = useRouter();
@@ -19,7 +16,7 @@ export default function MbetiDetailPage() {
   console.log(data?.fetchMbti.carMain[0].fileimage.url);
   return (
     <>
-      <PreminumITypeDetailContatiner data={data} />
+      <TypeDetailContatiner data={data} />
     </>
   );
 }

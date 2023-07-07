@@ -17,8 +17,7 @@ export default function FirstPagePresenter(
             </S.MaintitleP>
           </div>
           <S.ButtonBox>
-            <S.Button onClick={props.OnClickPremium}>Premium car</S.Button>
-            <S.Button onClick={props.OnClickDomestic}>Domestic car</S.Button>
+            <S.Button onClick={props.OnClickPremium}>Click Play</S.Button>
           </S.ButtonBox>
         </S.MainBox>
       </S.Wrapper>
