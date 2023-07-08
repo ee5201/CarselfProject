@@ -12,8 +12,8 @@ export default function FirstPagePresenter(
           <div>
             <S.MaintitleH1>Seize The Day</S.MaintitleH1>
             <S.MaintitleP>
-              Try to Check out your personal MBTI for fun, then you'll find the
-              car that fits you
+              Check out your personal MBTI for fun, then you'll find the car
+              that fits to you
             </S.MaintitleP>
           </div>
           <S.ButtonBox>

@@ -7,9 +7,9 @@ export default function MBTIPagePresenter(props) {
       <S.Wrapper>
         <S.WrapperBox>
           <S.TitleBox>
-            <S.Title>Chose Your MBTI Type </S.Title>
+            <S.Title>Choose Your Type </S.Title>
             <S.Subtitle>
-              Find your tendencies, Are you an Introvert or Extrovert?
+              Which person are you? Introvert or Extrovert?
             </S.Subtitle>
           </S.TitleBox>
           <S.ButtonWrapper>

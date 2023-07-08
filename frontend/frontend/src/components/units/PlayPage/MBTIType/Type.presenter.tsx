@@ -7,7 +7,7 @@ export default function MBTItypePresenter(props): JSX.Element {
     <S.Wrapper>
       <S.WrapperBox>
         <S.TItleBox>
-          <S.ItypeTitle>Click and MBTI</S.ItypeTitle>
+          <S.ItypeTitle>Click your MBTI</S.ItypeTitle>
         </S.TItleBox>
         <S.GridBox>
           {props.TypeChange ? (
