@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CarSize } from './entities/carsize.entity';
 import { Repository } from 'typeorm';
+import { ICarSizeServiceCreate } from './interface/carSizes-service';
 
 @Injectable()
 export class CarSizeService {
@@ -9,7 +10,7 @@ export class CarSizeService {
     @InjectRepository(CarSize)
     private readonly CarSizeRepository: Repository<CarSize>
   ) {}
-  create({ name }): Promise<CarSize> {
+  create({ name }: ICarSizeServiceCreate): Promise<CarSize> {
     return this.CarSizeRepository.save({ name });
   }
 }

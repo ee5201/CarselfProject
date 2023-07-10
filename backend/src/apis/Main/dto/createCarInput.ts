@@ -1,23 +1,24 @@
-import { Field, InputType, Int } from '@nestjs/graphql';
-import { CarSizeInput } from 'src/apis/carSIze/dto/CarSizeinput';
-import { CarBrandInput } from 'src/apis/carbrand/dto/createCarbrandInput';
+import { Field, InputType, Int, PartialType } from '@nestjs/graphql';
+import { CarMains } from '../entities/main.entity';
 import { CarCategoryInput } from 'src/apis/carcategories/dto/carCategoryInput';
-import { CreateMbtiInput } from 'src/apis/mbti/dto/creatembtiinput';
+import { CarBrandInput } from 'src/apis/carbrand/dto/createCarbrandInput';
+import { CarSizeInput } from 'src/apis/carSIze/dto/CarSizeinput';
+import { FilesInput } from 'src/apis/filestest/dto/createImages';
 
 @InputType()
 export class CreateCarInput {
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   name: string;
-  @Field(() => String)
-  description: string;
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   price: number;
+  @Field(() => String, { nullable: true })
+  description: string;
   @Field(() => CarCategoryInput, { nullable: true })
   carCategoryId: CarCategoryInput;
   @Field(() => CarBrandInput, { nullable: true })
   carBrandId: CarBrandInput;
-  @Field(() => CarSizeInput)
+  @Field(() => CarSizeInput, { nullable: true })
   carSizeId: CarSizeInput;
-  @Field(() => CreateMbtiInput, { nullable: true })
-  creatembti: CreateMbtiInput;
+  @Field(() => FilesInput, { nullable: true })
+  FileId: FilesInput;
 }

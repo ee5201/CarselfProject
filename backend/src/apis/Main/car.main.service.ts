@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { CarMains } from './entities/main.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
-  ICarMainCreate,
-  ICarMainDelete,
-  ICarMainUpdate,
-  IPropsFetchOne,
+  ICarmainFetchCar,
+  ICarmainFetchOne,
+  ICarmainCreate,
+  ICarmainUpdate,
 } from './interface/carMainServiceinterface';
 
 @Injectable()
@@ -18,52 +18,56 @@ export class MainService {
 
   fetchAll(): Promise<CarMains[]> {
     return this.CarMainRepository.find({
-      relations: ['mbtis', 'carSize', 'carBrand', 'carCategory'],
+      relations: ['fileimage', 'carSize', 'carBrand', 'carCategory'],
     });
   }
-  fetchOne({ carName, carId }: IPropsFetchOne): Promise<CarMains> {
+  fetchOne({ carId, carName }: ICarmainFetchOne): Promise<CarMains> {
     return this.CarMainRepository.findOne({
       where: {
         id: carId,
         name: carName,
       },
-      relations: ['mbtis', 'carSize', 'carBrand', 'carCategory'],
+      relations: ['fileimage', 'carSize', 'carBrand', 'carCategory'],
     });
   }
 
-  create({ createCarInput }: ICarMainCreate): Promise<CarMains> {
-    const { creatembti, carSizeId, carBrandId, carCategoryId, ...carMain } =
+  fetchCar({ carName }: ICarmainFetchCar) {
+    return this.CarMainRepository.find({
+      where: { name: In(carName) },
+      relations: ['fileimage', 'carSize', 'carBrand', 'carCategory'],
+    });
+  }
+
+  bulkInsert({ names }) {
+    return this.CarMainRepository.insert(names);
+  }
+
+  create({ createCarInput }: ICarmainCreate): Promise<CarMains> {
+    const { FileId, carSizeId, carBrandId, carCategoryId, ...createCar } =
       createCarInput;
     const result = this.CarMainRepository.save({
-      ...carMain,
+      ...createCar,
       carCategory: {
         ...carCategoryId,
-      },
-      carBrand: {
-        ...carBrandId, //
       },
       carSize: {
         ...carSizeId,
       },
-      mbtis: {
-        ...creatembti,
+      carBrand: {
+        ...carBrandId,
+      },
+      fileimage: {
+        ...FileId,
       },
     });
     return result;
   }
 
-  async delete({ carId }: ICarMainDelete): Promise<boolean> {
-    const result = this.CarMainRepository.softDelete({
-      id: carId,
-    });
-    return (await result).affected ? true : false;
-  }
-
-  async update({ carName, updateCarInput }: ICarMainUpdate) {
-    const Car = await this.fetchOne({ carName });
+  async update({ carId, carName, updateCarInput }: ICarmainUpdate) {
+    const Id = await this.fetchOne({ carId, carName });
 
     const result = this.CarMainRepository.save({
-      ...Car,
+      ...Id,
       ...updateCarInput,
     });
     return result;

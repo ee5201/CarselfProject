@@ -1,5 +1,0 @@
-{
-  "singleQuote": true, //“ “ 를 ‘ ‘ 로 통일시켜주는 것
-  "trailingComma": "all", //문장 제일 끝에 콤마( , ) 를 자동으로 붙여주는 것
-  "tabWidth": 4 //들여쓰기를 몇 칸으로 할지 기준
-}

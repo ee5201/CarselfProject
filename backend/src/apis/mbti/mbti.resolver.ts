@@ -2,6 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { MBTIS } from './entities/mbti.entity';
 import { MbtiService } from './mbti.service';
 import { CreateMbtiInput } from './dto/creatembtiinput';
+import { UpdateMBTIInput } from './dto/updatembtiInput';
 
 @Resolver()
 export class MbtiResolver {
@@ -18,9 +19,21 @@ export class MbtiResolver {
   }
   @Mutation(() => MBTIS)
   creatembti(
-    @Args('name') name: string, //
-    @Args('contents') contents: string
+    @Args('creatembtiInput') creatembtiInput: CreateMbtiInput //
   ): Promise<MBTIS> {
-    return this.mbtiservice.create({ name, contents });
+    return this.mbtiservice.create({ creatembtiInput });
+  }
+
+  @Mutation(() => Boolean)
+  deleteCar(@Args('mbti') mbti: string): Promise<boolean> {
+    return this.mbtiservice.delete({ mbti });
+  }
+
+  @Mutation(() => MBTIS, { nullable: true })
+  updateMBTI(
+    @Args('mbtiName') mbtiName: string, //
+    @Args('updateMBTIInput') updateMBTIInput: UpdateMBTIInput
+  ) {
+    return this.mbtiservice.update({ mbtiName, updateMBTIInput });
   }
 }

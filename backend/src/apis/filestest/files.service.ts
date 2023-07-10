@@ -7,7 +7,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { v4 as uuid } from 'uuid';
-import { FilesImages } from '../filestest/entities/filesentity.entity';
+import { FilesImages } from './entities/filesentity.entity';
 
 @Injectable()
 export class FilesService {
@@ -16,11 +16,11 @@ export class FilesService {
     private readonly fileImageRepository: Repository<FilesImages>
   ) {}
 
-  async upload({ file }): Promise<FilesImages> {
-    const bucket = 'mbticar-storages';
+  async upload({ file }: IFilesServiceUpload): Promise<FilesImages> {
+    const bucket = process.env.FILES_BUCKET;
     const storage = new Storage({
-      projectId: 'mbti-390711',
-      keyFilename: 'mbti-390711-fca9dadff954.json',
+      projectId: process.env.FILES_PROJECTID,
+      keyFilename: process.env.FILES_KEYFILENAME,
     });
 
     const newFile = new FilesImages();

@@ -21,20 +21,18 @@ export class MainResolver {
   }
 
   @Mutation(() => CarMains)
-  createCar(@Args('createCarInput') createCarInput: CreateCarInput) {
+  createCar(
+    @Args('createCarInput') createCarInput: CreateCarInput
+  ): Promise<CarMains> {
     return this.mainservice.create({ createCarInput });
   }
 
-  @Mutation(() => Boolean)
-  deleteCar(@Args('carId') carId: string): Promise<boolean> {
-    return this.mainservice.delete({ carId });
-  }
-
-  @Mutation(() => CarMains, { nullable: true })
+  @Mutation(() => CarMains)
   updateCar(
-    @Args('Carname') carName: string, //
-    @Args('updateCarInput') updateCarInput: UpdateCarInput
+    @Args('carId') carId: string, //
+    @Args('carName') carName: string,
+    @Args('updateCarInput') updateCarInput: UpdateCarInput //
   ) {
-    return this.mainservice.update({ carName, updateCarInput });
+    return this.mainservice.update({ carId, carName, updateCarInput });
   }
 }

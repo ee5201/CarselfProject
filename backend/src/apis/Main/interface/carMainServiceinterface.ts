@@ -5,7 +5,7 @@ export interface ICarMainCreate {
   createCarInput: CreateCarInput;
 }
 
-export interface IPropsFetchOne {
+export interface ICarmainFetchOne {
   carId?: string;
 
   carName: string;
@@ -15,8 +15,22 @@ export interface ICarMainDelete {
   carId: string;
 }
 
-export interface ICarMainUpdate {
-  carName: string;
+export interface ICarmainFetchCar {
+  carName: string[];
+}
 
+export interface IPropsCarServiceBulkInsert {
+  names: {
+    name: string;
+  }[];
+}
+
+export interface ICarmainCreate {
+  createCarInput: CreateCarInput;
+}
+
+export interface ICarmainUpdate {
+  carId: string;
+  carName: string;
   updateCarInput: UpdateCarInput;
 }

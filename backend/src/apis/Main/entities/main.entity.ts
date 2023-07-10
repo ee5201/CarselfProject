@@ -2,14 +2,13 @@ import { Field, InputType, Int, ObjectType } from '@nestjs/graphql';
 import { CarSize } from 'src/apis/carSIze/entities/carsize.entity';
 import { CarBrand } from 'src/apis/carbrand/entities/carbrand.entity';
 import { CarCategory } from 'src/apis/carcategories/entities/carcategories.entity';
+import { FilesImages } from 'src/apis/filestest/entities/filesentity.entity';
 import { MBTIS } from 'src/apis/mbti/entities/mbti.entity';
+
 import {
   Column,
-  CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -25,10 +24,10 @@ export class CarMains {
   @Field(() => String)
   name: string;
   @Column()
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   price: number;
   @Column()
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   description: string;
   @JoinColumn()
   @ManyToOne(() => CarCategory)
@@ -40,13 +39,10 @@ export class CarMains {
   @ManyToOne(() => CarBrand)
   @Field(() => CarBrand, { nullable: true })
   carBrand: CarBrand;
-
-  @JoinTable()
-  @CreateDateColumn()
-  createAt: Date;
-  @DeleteDateColumn()
-  deleteAt: Date;
-  @ManyToOne(() => MBTIS)
-  @Field(() => MBTIS)
-  mbtis: MBTIS;
+  @ManyToOne(() => FilesImages)
+  @Field(() => FilesImages, { nullable: true })
+  fileimage: FilesImages;
+  @ManyToMany(() => MBTIS, (Mbtis) => Mbtis.carMain)
+  @Field(() => [MBTIS], { nullable: true })
+  mbtis: MBTIS[];
 }

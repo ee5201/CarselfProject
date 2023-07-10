@@ -2,7 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type CarSize {
+type CarMains {
+  id: String!
+  name: String!
+  price: Int!
+  description: String!
+}
+
+type CarCategory {
   id: String!
   name: String!
 }
@@ -12,7 +19,7 @@ type CarBrand {
   name: String!
 }
 
-type CarCategory {
+type CarSize {
   id: String!
   name: String!
 }
@@ -21,17 +28,10 @@ type MBTIS {
   id: String!
   name: String!
   contents: String!
-}
-
-type CarMains {
-  id: String!
-  name: String!
-  price: Int!
-  description: String!
   carCategory: CarCategory
   carSize: CarSize
   carBrand: CarBrand
-  mbtis: MBTIS!
+  carMain: CarMains
 }
 
 type Query {
@@ -43,23 +43,32 @@ type Query {
 
 type Mutation {
   createCar(createCarInput: CreateCarInput!): CarMains!
-  deleteCar(carId: String!): Boolean!
-  updateCar(Carname: String!, updateCarInput: UpdateCarInput!): CarMains
   createCarCategory(name: String!): CarCategory
   carBrand(name: String!): CarBrand
-  uploadFile(files: [Upload!]!): [String!]!
+  uploadFile(file: Upload!): String!
   createCarSize(name: String!): CarSize!
-  creatembti(name: String!, contents: String!): MBTIS!
+  creatembti(creatembtiInput: CreateMbtiInput!): MBTIS!
+  deleteCar(mbti: String!): Boolean!
+  updateMBTI(mbtiName: String!, updateMBTIInput: UpdateMBTIInput!): MBTIS
 }
 
 input CreateCarInput {
+  id: String
+  name: String
+  price: Int
+  description: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateMbtiInput {
   name: String!
-  description: String!
-  price: Int!
+  contents: String!
+  creatmains: CreateCarInput
   carCategoryId: CarCategoryInput
   carBrandId: CarBrandInput
   carSizeId: CarSizeInput!
-  creatembti: CreateMbtiInput
 }
 
 input CarCategoryInput {
@@ -77,21 +86,11 @@ input CarSizeInput {
   name: String
 }
 
-input CreateMbtiInput {
-  id: String
+input UpdateMBTIInput {
   name: String
   contents: String
-}
-
-input UpdateCarInput {
-  name: String
-  description: String
-  price: Int
+  creatmains: CreateCarInput
   carCategoryId: CarCategoryInput
   carBrandId: CarBrandInput
   carSizeId: CarSizeInput
-  creatembti: CreateMbtiInput
 }
-
-"""The `Upload` scalar type represents a file upload."""
-scalar Upload
