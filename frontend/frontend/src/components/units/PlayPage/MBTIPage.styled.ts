@@ -9,20 +9,24 @@ export const Wrapper = styled.section`
   background-size: cover;
   justify-content: center;
   align-items: center;
-  font-family: "my-font";
 `;
 
 export const WrapperBox = styled.div`
-  height: 60vh;
+  height: 60%;
+  text-align: center;
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    height: 100%;
+  }
 `;
 
 export const TitleBox = styled.div`
-  padding: 50px;
-  text-align: center;
+  padding: 20px;
 `;
 
 export const Title = styled.h1`
-  font-size: 60px;
+  font-size: 72px;
   color: #fff;
 `;
 
@@ -33,20 +37,22 @@ export const Subtitle = styled.h1`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  height: 400px;
-  width: 1000px;
+  height: auto;
+  width: 100%;
   justify-content: center;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   position: relative;
   overflow: hidden;
+  flex-wrap: wrap;
 `;
 
 export const BtnBox = styled.div`
   display: flex;
   overflow: hidden;
-  margin: 80px;
+  margin: 20px;
   min-width: 300px;
+  flex-grow: 1;
   height: 300px;
   justify-content: center;
   align-items: center;
@@ -56,9 +62,12 @@ export const BtnBox = styled.div`
   cursor: pointer;
   :hover {
     margin-bottom: 1px;
-    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
     background: linear-gradient(rgba(0, 0, 0, 0), #ece5c7);
+  }
+  @media (max-width: 768px) {
+    min-width: 80px;
+    height: 180px;
+    border-radius: 10px;
   }
 `;
 export const ContentWrapper = styled.div`

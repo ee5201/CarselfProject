@@ -1,7 +1,8 @@
 import { Carousel } from "antd";
 import * as S from "./MBTIPage.styled";
+import { IMbtiPagePresenter } from "./MBTIPage.types";
 
-export default function MBTIPagePresenter(props) {
+export default function MBTIPagePresenter(props: IMbtiPagePresenter) {
   return (
     <>
       <S.Wrapper>

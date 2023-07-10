@@ -4,7 +4,7 @@ import { MouseEvent, useState } from "react";
 import MBTIPagePresenter from "./MBTIPage.presenter";
 import { FETCHMBTIS } from "./MBTIPage.queries";
 
-export default function MBTIPageContainer(props) {
+export default function MBTIPageContainer() {
   const { data } = useQuery(FETCHMBTIS);
   const router = useRouter();
 

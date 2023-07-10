@@ -3,12 +3,13 @@ import { FETCHMBTIS } from "./Type.queries";
 import { useRouter } from "next/router";
 import { MouseEvent } from "react";
 import MBTItypePresenter from "./Type.presenter";
+import { IMbtiTypeContatiner } from "./Type.type";
 
-export default function MBTItypeContainer(props) {
+export default function MBTItypeContainer(props: IMbtiTypeContatiner) {
   const { data } = useQuery(FETCHMBTIS);
   const router = useRouter();
-  const IMBTI = data?.fetchMbtis.filter((el) => el.name.startsWith("I"));
-  const EMBTI = data?.fetchMbtis.filter((el) => el.name.startsWith("E"));
+  const IMBTI = data?.fetchMbtis.filter((el: any) => el.name.startsWith("I"));
+  const EMBTI = data?.fetchMbtis.filter((el: any) => el.name.startsWith("E"));
 
   const OnclickID = (event: MouseEvent<HTMLSpanElement>) => {
     router.push(`/ClickPlayPage/Itype/${event.currentTarget.id}`);

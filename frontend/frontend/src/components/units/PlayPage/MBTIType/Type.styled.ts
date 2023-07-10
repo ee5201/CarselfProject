@@ -12,18 +12,22 @@ export const Wrapper = styled.div`
   font-family: "myfont";
 `;
 export const WrapperBox = styled.div`
-  height: 80vh;
+  height: 80%;
+  padding: 30px;
+  @media (max-width: 768px) {
+  }
 `;
 
 export const GridBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+  }
 `;
 
 export const GridItem = styled.div`
   display: flex;
-  margin: 50px;
   width: 200px;
   height: 200px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -35,9 +39,19 @@ export const GridItem = styled.div`
   font-size: 30px;
   background: #cdc2ae;
   cursor: pointer;
-  :hover {
-    margin-top: 1px;
-    background: linear-gradient(rgba(0, 0, 0, 0.1), #cdc2ae);
+
+  @media (min-width: 769px) {
+    margin: 50px;
+    :hover {
+      margin-top: 1px;
+      background: linear-gradient(rgba(0, 0, 0, 0.1), #cdc2ae);
+    }
+  }
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 100px;
+    margin-top: 60px;
+    font-size: 30px;
   }
 `;
 
@@ -47,7 +61,13 @@ export const TItleBox = styled.div`
 `;
 
 export const ItypeTitle = styled.span`
-  font-size: 60px;
+  font-size: 80px;
   font-weight: bold;
   color: #fff;
+
+  @media (max-width: 768px) {
+    font-size: 70px;
+    display: flex;
+    text-align: center;
+  }
 `;
